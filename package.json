@@ -1,0 +1,23 @@
+{
+  "name": "ng2-test-seed",
+  "version": "0.0.1",
+  "description": "Setup seed for Angular 2 application",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/angular/ng-test-seed.git"
+  },
+  "scripts": {
+  },
+  "devDependencies": {
+    "angular2": "2.0.0-alpha.41",
+    "gulp": "^3.8.8",
+    "jasmine": "2.3.2",
+    "karma": "^0.12.23",
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-cli": "^0.0.4",
+    "karma-dart": "^0.2.8",
+    "karma-jasmine": "^0.3.6",
+    "karma-sauce-launcher": "^0.2.11"
+  }
+}
