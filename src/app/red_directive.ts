@@ -1,7 +1,7 @@
-import {ElementRef, Component, Directive, Injectable} from 'angular2/angular2';
+import {ElementRef, Directive, Renderer} from 'angular2/angular2';
 
 @Directive({selector: '[red]'})
-class RedDec {
+export class RedDec {
   constructor(el: ElementRef, renderer: Renderer) {
     renderer.setElementStyle(el, 'color', 'red');
   }

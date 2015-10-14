@@ -4,19 +4,19 @@ import {RedDec} from './red_directive';
 
 @Component({selector: 'my-app', viewProviders: [Store, TodoFactory]})
 @View({templateUrl: 'app_component.html', directives: [NgFor, RedDec]})
-class AppComponent {
+export class AppComponent {
   todoEdit: Todo = null;
 
   constructor(public todoStore: Store, public factory: TodoFactory) {}
 
-  enterTodo(inputElement): void {
+  enterTodo(inputElement: any): void {
     this.addTodo(inputElement.value);
     inputElement.value = '';
   }
 
   editTodo(todo: Todo): void { this.todoEdit = todo; }
 
-  doneEditing($event, todo: Todo): void {
+  doneEditing($event: any, todo: Todo): void {
     var which = $event.which;
     var target = $event.target;
     if (which === 13) {
@@ -34,10 +34,10 @@ class AppComponent {
 
   deleteMe(todo: Todo): void { this.todoStore.remove(todo); }
 
-  toggleAll($event): void {
+  toggleAll($event: any): void {
     var isComplete = $event.target.checked;
     this.todoStore.list.forEach((todo: Todo) => { todo.completed = isComplete; });
   }
 
-  clearCompleted(): void { this.todoStore.removeBy((todo: Todo) => todo.completed); }
+  // clearCompleted(): void { this.todoStore.removeBy((todo: Todo) => todo.completed); }
 }

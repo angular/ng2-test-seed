@@ -1,5 +1,4 @@
 import {Injectable} from 'angular2/angular2';
-import {ListWrapper, Predicate} from 'angular2/src/core/facade/collection';
 
 // base model for RecordStore
 export class KeyModel {
@@ -30,15 +29,15 @@ export class Store {
 
   remove(record: KeyModel): void { this._spliceOut(record); }
 
-  removeBy(callback: Predicate<KeyModel>): void {
-    var records = ListWrapper.filter(this.list, callback);
-    ListWrapper.removeAll(this.list, records);
-  }
+  // removeBy(callback: any): void {
+  //   var records = this.list.filter(callback);
+  //   this.list.removeAll(records);
+  // }
 
   private _spliceOut(record: KeyModel) {
     var i = this._indexFor(record);
     if (i > -1) {
-      return ListWrapper.splice(this.list, i, 1)[0];
+      return this.list.splice(i, 1)[0];
     }
     return null;
   }
