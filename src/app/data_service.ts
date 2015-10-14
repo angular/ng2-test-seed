@@ -29,10 +29,10 @@ export class Store {
 
   remove(record: KeyModel): void { this._spliceOut(record); }
 
-  // removeBy(callback: any): void {
-  //   var records = this.list.filter(callback);
-  //   this.list.removeAll(records);
-  // }
+  removeBy(callback: any): void {
+    var records = this.list.filter(callback);
+    this.list.removeAll(records);
+  }
 
   private _spliceOut(record: KeyModel) {
     var i = this._indexFor(record);

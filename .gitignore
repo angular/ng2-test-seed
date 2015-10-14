@@ -28,4 +28,6 @@ node_modules
 
 # Compiled output
 src/app/*.js
-src/app/*.js.map
+src/app/*.map
+src/test/*.js
+src/test/*.map

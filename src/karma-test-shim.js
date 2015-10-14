@@ -34,8 +34,9 @@ System.import('angular2/src/core/dom/browser_adapter').then(function(browser_ada
   return Promise.all(
     Object.keys(window.__karma__.files) // All files served by Karma.
     .filter(onlySpecFiles)
-    .map(filePath2moduleName)        // Normalize paths to module names.
+    // .map(filePath2moduleName)        // Normalize paths to module names.
     .map(function(moduleName) {
+      console.log('loading module: ' + moduleName);
       // loads all spec files via their global module names (e.g. 'base/src/app/hero.service.spec')
       return System.import(moduleName);
     }));
@@ -60,5 +61,5 @@ function onlyAppFiles(filePath) {
 
 
 function onlySpecFiles(path) {
-  return /\.spec\.js$/.test(path);
+  return /_test\.js$/.test(path);
 }

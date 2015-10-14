@@ -7,19 +7,17 @@ module.exports = function(config) {
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
-
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
-
 
     // // list of files / patterns to load in the browser
     files: [
       // paths loaded by Karma
       {pattern: 'node_modules/systemjs/dist/system.src.js', included: true, watched: true},
       {pattern: 'node_modules/angular2/bundles/angular2.js', included: true, watched: true},
-      {pattern: 'node_modules/angular2/bundles/testing.dev.js', included: true, watched: true},
-      {pattern: 'src/app/karma-test-shim.js', included: true, watched: true},
+      {pattern: 'node_modules/angular2/bundles/testing.js', included: true, watched: true},
+      {pattern: 'src/karma-test-shim.js', included: true, watched: true},
 
       // paths loaded via module imports
       {pattern: 'src/**/*.js', included: false, watched: true},
@@ -34,25 +32,11 @@ module.exports = function(config) {
       {pattern: 'src/**/*.js.map', included: false, watched: false}
     ],
 
-
-    // list of files to exclude
-    exclude: [
-    ],
-
-
     // proxied base paths
     proxies: {
       // required for component assests fetched by Angular's compiler
       "/app/": "/base/src/app/"
     },
-
-
-    // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-      'src/**/*.js': ['sourcemap']
-    },
-
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -70,7 +54,7 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_DEBUG,
 
 
     // enable / disable watching file and executing tests whenever any file changes
