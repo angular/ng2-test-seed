@@ -27,4 +27,5 @@ build/Release
 node_modules
 
 # Compiled output
-build
+src/app/*.js
+src/app/*.js.map

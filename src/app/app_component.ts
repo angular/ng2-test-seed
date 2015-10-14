@@ -3,7 +3,7 @@ import {Store, Todo, TodoFactory} from './data_service';
 import {RedDec} from './red_directive';
 
 @Component({selector: 'my-app', viewProviders: [Store, TodoFactory]})
-@View({templateUrl: 'app_component.html', directives: [NgFor, RedDec]})
+@View({templateUrl: 'app/app_component.html', directives: [NgFor, RedDec]})
 export class AppComponent {
   todoEdit: Todo = null;
 

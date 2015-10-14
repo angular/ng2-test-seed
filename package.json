@@ -8,16 +8,23 @@
     "url": "https://github.com/angular/ng-test-seed.git"
   },
   "scripts": {
+    "clean": "rimraf src/app/*.js src/app/*.js.map",
+    "build": "tsc -p src",
+    "watch": "tsc -p src --watch",
+    "serve": "http-server -p 9090 -c-1",
+    "test": "karma start karma.conf.js"
   },
   "devDependencies": {
     "angular2": "2.0.0-alpha.42",
-    "gulp": "^3.8.8",
+    "del": "^2.0.2",
+    "http-server": "^0.8.5",
     "jasmine": "2.3.2",
     "karma": "^0.12.23",
     "karma-chrome-launcher": "^0.1.4",
     "karma-cli": "^0.0.4",
-    "karma-dart": "^0.2.8",
     "karma-jasmine": "^0.3.6",
+    "rimraf": "^2.4.3",
+    "systemjs": "^0.19.4",
     "typescript": "1.6.2"
   }
 }
