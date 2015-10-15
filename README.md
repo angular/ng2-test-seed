@@ -42,7 +42,7 @@ files and source maps from the `.ts` files. Run with:
 
 `npm run build`
 
-You can examine the configuration for the TypeScript compiler in `app/tsconfig.json`.
+You can examine the configuration for the TypeScript compiler in `tsconfig.json`.
 The generated files are output in the same folder as their sources.
 
 (Note: We use `module: system` instead of `commonjs`, but it makes tsc complain
@@ -91,7 +91,7 @@ You can see the Karma configuration at `karma.conf.js`. A few things are notable
  This means that Karma will not run them automatically.
 
  - To get file imports to work correctly in Kamra, we must include `systemjs`
- from the node_modules folder, as well as the helper file `src/karma-test-shim.js`.
+ from the node_modules folder, as well as the helper file `karma-test-shim.js`.
  This shim file uses System.js to load the JavaScript files which Karma served
  but did not automatically run.
  
