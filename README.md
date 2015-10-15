@@ -90,7 +90,7 @@ You can see the Karma configuration at `karma.conf.js`. A few things are notable
  - The compiled JavaScript files at `src/**/*.js` are served and watched but _not_ included.
  This means that Karma will not run them automatically.
 
- - To get file imports to work correctly in Kamra, we must include `systemjs`
+ - To get file imports to work correctly in Karma, we must include `systemjs`
  from the node_modules folder, as well as the helper file `karma-test-shim.js`.
  This shim file uses System.js to load the JavaScript files which Karma served
  but did not automatically run.
