@@ -9,6 +9,9 @@
   </ul>
   <div *ng-if="selectedHero">
     <h2>{{selectedHero.name | uppercase}} is my hero</h2>
-		<button (click)="gotoDetail()">View Details</button>
+  </div>
+  <div *ng-if="selectedHero">
+    <hr/>
+    <my-hero-detail [hero]="selectedHero"></my-hero-detail>
   </div>
 </div>

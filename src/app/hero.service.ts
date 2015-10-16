@@ -2,6 +2,8 @@ import {HEROES} from './mock-heroes';
 import {Hero} from './hero';
 
 export class HeroService {
+  selectedHeroId: number;
+
 	getHeroes() {
 		return Promise.resolve(HEROES);
 	}
