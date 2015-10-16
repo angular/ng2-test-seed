@@ -36,7 +36,6 @@ System.import('angular2/src/core/dom/browser_adapter').then(function(browser_ada
     .filter(onlySpecFiles)
     // .map(filePath2moduleName)        // Normalize paths to module names.
     .map(function(moduleName) {
-      console.log('loading module: ' + moduleName);
       // loads all spec files via their global module names (e.g. 'base/src/app/hero.service.spec')
       return System.import(moduleName);
     }));
