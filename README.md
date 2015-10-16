@@ -21,7 +21,9 @@ running the build steps, and running tests.
 
 Begin by cloning the repository.
 
-Run `npm install` to get dependencies.
+Use npm to get dependencies:
+
+`npm install`
 
 Take a look at the `src` folder. All application and test code, as well as
 some configuration files, are in here. The `app` folder contains the actual
@@ -37,16 +39,13 @@ or gulp to manage development pipelines.
 
 ### Build
 
-The build step invokes the TypeScript compiler to create es5 javascript
+The build step invokes the TypeScript compiler to create ES5 javascript
 files and source maps from the `.ts` files. Run with:
 
 `npm run build`
 
 You can examine the configuration for the TypeScript compiler in `tsconfig.json`.
 The generated files are output in the same folder as their sources.
-
-(Note: We use `module: system` instead of `commonjs`, but it makes tsc complain
-about not being able to find the module `angular2`. TODO: Look into why this is.)
 
 To remove all generated files, run:
 
@@ -58,8 +57,9 @@ The watch step can be run with:
 
 `npm run watch`
 
-This runs the TypeScript compiler with the additional `--watch` flag, which causes
-it to recomiple whenever a `.ts` file changes.
+This runs the TypeScript compiler with the additional `--watch` flag, which 
+sets up a persistent process that recompiles new `.js` files whenever a `.ts`
+file changes.
 
 Run this process indefinitely in a different tab or in the background, since
 the following commands will use it.
