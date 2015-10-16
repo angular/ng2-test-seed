@@ -7,11 +7,6 @@
       <span class="badge">{{hero.id}}</span> {{hero.name}}</a>
     </li>
   </ul>
-  <div *ng-if="selectedHero">
-    <h2>{{selectedHero.name | uppercase}} is my hero</h2>
-  </div>
-  <div *ng-if="selectedHero">
-    <hr/>
-    <my-hero-detail [hero]="selectedHero"></my-hero-detail>
-  </div>
+  <hr/>
+  <my-hero-detail [hero]="selectedHero"></my-hero-detail>
 </div>
