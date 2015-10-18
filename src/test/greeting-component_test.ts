@@ -4,9 +4,12 @@ import {
   ddescribe,
   describe,
   expect,
+  inject,
   injectAsync,
   TestComponentBuilder,
-  beforeEachProviders
+  beforeEachProviders,
+  fakeAsync,
+  tick
 } from 'angular2/testing';
 import { provide } from 'angular2/angular2';
 import { UserService } from '../app/user-service';
@@ -46,4 +49,41 @@ ddescribe('greeting component', () => {
       expect(compiled.querySelector('h3').textContent).toEqual('Status: Foobar');
     });
   }));
+
+  it('should override the template', injectAsync([TestComponentBuilder], (tcb) => {
+    return tcb.overrideTemplate(GreetingComponent, `<span>{{greeting}}<span>`)
+        .createAsync(GreetingComponent).then((fixture) => {
+          fixture.detectChanges();
+
+          var compiled = fixture.debugElement.nativeElement;
+          expect(compiled.textContent).toEqual('Enter PIN');
+        });
+      }));
+
+  it('should accept pin', injectAsync([TestComponentBuilder], (tcb) => {
+    return tcb.createAsync(GreetingComponent).then((fixture) => {
+      fixture.detectChanges();
+      var compiled = fixture.debugElement.nativeElement;
+      compiled.querySelector('button').click();
+
+      return fixture.debugElement.componentInstance.pending.then(() => {
+        fixture.detectChanges();
+        expect(compiled.querySelector('h3').textContent).toEqual('Status: Welcome!');
+      });;
+    });
+  }));
+
+  it('should accept pin (with fakeAsync)', inject([TestComponentBuilder], fakeAsync((tcb) => {
+    var fixture;
+    tcb.createAsync(GreetingComponent).then((rootFixture) => {
+      fixture = rootFixture });
+    tick();
+
+    var compiled = fixture.debugElement.nativeElement;
+    compiled.querySelector('button').click();
+
+    tick();
+    fixture.detectChanges();
+    expect(compiled.querySelector('h3').textContent).toEqual('Status: Welcome!');
+  })));
 });

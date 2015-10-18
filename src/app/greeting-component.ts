@@ -12,12 +12,13 @@ import {UserService} from './user-service';
 })
 export class GreetingComponent {
   greeting: string = 'Enter PIN';
+  pending: Promise<any>;
 
   constructor(public user: UserService) {
   }
 
   enter() {
-    this.user.getGreeting().then((greeting) => {
+    this.pending = this.user.getGreeting().then((greeting) => {
       this.greeting = greeting;
     });
   }
