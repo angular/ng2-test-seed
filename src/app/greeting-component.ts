@@ -18,6 +18,7 @@ export class GreetingComponent {
   }
 
   enter() {
+    this.greeting = 'Processing...';
     this.pending = this.user.getGreeting().then((greeting) => {
       this.greeting = greeting;
     });

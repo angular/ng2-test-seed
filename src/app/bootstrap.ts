@@ -4,4 +4,4 @@ import {AppComponent} from './app.component';
 import {LoginService} from './login-service';
 
 
-bootstrap(AppComponent, [HeroService, LoginService, UserService]);
+bootstrap(AppComponent, [LoginService, UserService]);
