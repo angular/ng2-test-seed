@@ -8,7 +8,6 @@ import {GreetingComponent} from './greeting-component';
   template: `
     <my-greeting></my-greeting>
     <h1>{{title}}</h1>
-    <my-heroes></my-heroes>
   `,
   styles: [`
     .router-link {padding: 5px;text-decoration: none;}
