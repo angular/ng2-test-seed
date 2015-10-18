@@ -8,7 +8,7 @@ import {UserService} from './user-service';
     <button (click)="enter()">Enter</button>
     <h3>Status: {{greeting}}</h3>
   `,
-  styles [`
+  styles :[`
     input {font-family: monospace; font-size: 2em; width: 4em}
   `],
   directives: [FORM_DIRECTIVES]
