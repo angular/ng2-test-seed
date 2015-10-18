@@ -22,7 +22,7 @@ class MockLoginService extends LoginService {
   }
 }
 
-ddescribe('greeting component', () => {
+describe('greeting component', () => {
     beforeEachProviders(() => [
     provide(LoginService, {useClass: MockLoginService}),
     UserService
