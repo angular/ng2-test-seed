@@ -1,20 +1,24 @@
-import {Component, OnInit} from 'angular2/angular2';
+import {Component, FORM_DIRECTIVES} from 'angular2/angular2';
 import {UserService} from './user-service';
 
 @Component({
   selector: 'my-greeting',
   template: `
-    <h3>Login status: {{greeting}}</h3>
-  `
+    <input [(ng-model)]="user.pin" placeholder="1111" type=number></input>
+    <button (click)="enter()">Enter</button>
+    <h3>Status: {{greeting}}</h3>
+  `,
+  directives: [FORM_DIRECTIVES]
 })
-export class GreetingComponent implements OnInit{
-  greeting: string;
-  constructor(public _user: UserService) {
+export class GreetingComponent {
+  greeting: string = 'Enter PIN';
+
+  constructor(public user: UserService) {
   }
 
-  onInit() {
-    this._user.getGreeting().then((greeting) => {
+  enter() {
+    this.user.getGreeting().then((greeting) => {
       this.greeting = greeting;
-    })
+    });
   }
 }
