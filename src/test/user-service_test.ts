@@ -1,4 +1,4 @@
-import { it, describe, expect, inject, injectAsync, beforeEachProviders } from 'angular2/testing';
+import { it, iit, describe, expect, inject, injectAsync, beforeEachProviders, fakeAsync, tick } from 'angular2/testing';
 import { provide } from 'angular2/angular2';
 import { UserService } from '../app/user-service';
 import { LoginService } from '../app/login-service';
@@ -44,11 +44,25 @@ class MockLoginService extends LoginService {
 }
 
 describe('with mocked login', () => {
-  beforeEachProviders(() => [provide(LoginService, {useClass: MockLoginService}), UserService])
+  beforeEachProviders(() => [provide(LoginService, {useClass: MockLoginService}), UserService]);
 
   it('should greet', injectAsync([UserService], (service) => {
     return service.getGreeting().then((greeting) => {
       expect(greeting).toEqual('Welcome!');
     });
   }));
+});
+
+describe('with fake async', () => {
+  beforeEachProviders(() => [LoginService, UserService]);
+
+  it('should greet (with fakeAsync)', inject([UserService], fakeAsync((service) => {
+    var greeting;
+    service.getGreeting().then((value) => {
+      greeting = value;
+    });
+
+    tick(2000);
+    expect(greeting).toEqual('Login failure!');
+  })));
 });
