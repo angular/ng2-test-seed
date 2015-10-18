@@ -10,7 +10,7 @@ import {
 
 
 describe('default test injector', () => {
-  it('should provide default pipes', inject([APP_ID], (id) => {
+  it('should provide default id', inject([APP_ID], (id) => {
     expect(id).toBe('a');
   }));
 });
