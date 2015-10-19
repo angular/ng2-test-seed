@@ -25,7 +25,7 @@ describe('greeting component', () => {
           fixture.detectChanges();
           var compiled = fixture.debugElement.nativeElement;
 
-          expect(compiled.textContent).toContain('Content');
+          expect(compiled).toContainText('Content');
         });
   }));
 
@@ -35,7 +35,7 @@ describe('greeting component', () => {
           fixture.detectChanges();
           var compiled = fixture.debugElement.nativeElement;
 
-          expect(compiled.textContent).toContain('ABC');
+          expect(compiled).toContainText('ABC');
         });
   }));
 });

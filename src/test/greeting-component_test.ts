@@ -33,8 +33,9 @@ describe('greeting component', () => {
       fixture.detectChanges();
       var compiled = fixture.debugElement.nativeElement;
 
-      expect(compiled.textContent).toContain('Enter PIN');
-      expect(compiled.querySelector('h3').textContent).toEqual('Status: Enter PIN');
+
+      expect(compiled).toContainText('Enter PIN');
+      expect(compiled.querySelector('h3')).toHaveText('Status: Enter PIN');
     });
   }));
 
@@ -46,7 +47,7 @@ describe('greeting component', () => {
 
       fixture.detectChanges();
       var compiled = fixture.debugElement.nativeElement;
-      expect(compiled.querySelector('h3').textContent).toEqual('Status: Foobar');
+      expect(compiled.querySelector('h3')).toHaveText('Status: Foobar');
     });
   }));
 
@@ -56,7 +57,7 @@ describe('greeting component', () => {
           fixture.detectChanges();
 
           var compiled = fixture.debugElement.nativeElement;
-          expect(compiled.textContent).toEqual('Enter PIN');
+          expect(compiled).toHaveText('Enter PIN');
         });
       }));
 
@@ -68,7 +69,7 @@ describe('greeting component', () => {
 
       return fixture.debugElement.componentInstance.pending.then(() => {
         fixture.detectChanges();
-        expect(compiled.querySelector('h3').textContent).toEqual('Status: Welcome!');
+        expect(compiled.querySelector('h3')).toHaveText('Status: Welcome!');
       });;
     });
   }));
@@ -84,6 +85,6 @@ describe('greeting component', () => {
 
     tick();
     fixture.detectChanges();
-    expect(compiled.querySelector('h3').textContent).toEqual('Status: Welcome!');
+    expect(compiled.querySelector('h3')).toHaveText('Status: Welcome!');
   })));
 });
