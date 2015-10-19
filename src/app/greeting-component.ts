@@ -10,6 +10,7 @@ import {UserService} from './user-service';
   `,
   styles :[`
     input {font-family: monospace; font-size: 2em; width: 4em}
+    button {border: 2px solid; height: 2em}
   `],
   directives: [FORM_DIRECTIVES]
 })
