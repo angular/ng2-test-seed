@@ -1,4 +1,4 @@
-import {Component, CORE_DIRECTIVES} from 'angular2/angular2';
+import {Component} from 'angular2/core';
 import {GreetingComponent} from './greeting-component';
 import {BorderComponent} from './border-component';
 
@@ -9,7 +9,7 @@ import {BorderComponent} from './border-component';
       <my-greeting></my-greeting>
     </my-fancy-border>
   `,
-  directives: [CORE_DIRECTIVES, GreetingComponent, BorderComponent]
+  directives: [GreetingComponent, BorderComponent]
 })
 export class AppComponent {
 }
