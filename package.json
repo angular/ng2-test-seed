@@ -9,8 +9,10 @@
   },
   "scripts": {
     "postinstall": "typings install --ambient",
-    "clean": "rimraf src/**/*.js src/**/*.js.map",
-    "build": "tsc",
+    "clean": "rimraf built/",
+    "copy": "cp src/{index.html,styles.css} built/",
+    "copytemplates": "cp src/app/{*.html,*.css} built/app/",
+    "build": "tsc && npm run copy && npm run copytemplates",
     "watch": "tsc --watch",
     "serve": "http-server -p 9090 -c-1",
     "test": "karma start karma.conf.js"

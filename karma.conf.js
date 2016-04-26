@@ -30,25 +30,25 @@ module.exports = function(config) {
 
 
       {pattern: 'karma-test-shim.js', included: true, watched: true},
-      {pattern: 'src/test/matchers.js', included: true, watched: true},
+      {pattern: 'built/test/matchers.js', included: true, watched: true},
 
       // paths loaded via module imports
-      {pattern: 'src/**/*.js', included: false, watched: true},
+      {pattern: 'built/**/*.js', included: false, watched: true},
 
       // paths loaded via Angular's component compiler
       // (these paths need to be rewritten, see proxies section)
-      {pattern: 'src/**/*.html', included: false, watched: true},
-      {pattern: 'src/**/*.css', included: false, watched: true},
+      {pattern: 'built/**/*.html', included: false, watched: true},
+      {pattern: 'built/**/*.css', included: false, watched: true},
 
       // paths to support debugging with source maps in dev tools
       {pattern: 'src/**/*.ts', included: false, watched: false},
-      {pattern: 'src/**/*.js.map', included: false, watched: false}
+      {pattern: 'built/**/*.js.map', included: false, watched: false}
     ],
 
     // proxied base paths
     proxies: {
       // required for component assests fetched by Angular's compiler
-      "/app/": "/base/src/app/"
+      "/app/": "/base/built/app/"
     },
 
     reporters: ['progress'],

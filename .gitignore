@@ -27,10 +27,7 @@ build/Release
 node_modules
 
 # Compiled output
-src/app/*.js
-src/app/*.map
-src/test/*.js
-src/test/*.map
+built/
 
 # Typescript typings
 typings/
