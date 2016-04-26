@@ -7,6 +7,7 @@ import {
   inject,
   async,
   TestComponentBuilder,
+  beforeEach,
   beforeEachProviders,
   fakeAsync,
   tick
@@ -23,13 +24,19 @@ class MockLoginService extends LoginService {
 }
 
 describe('greeting component', () => {
-    beforeEachProviders(() => [
+  var builder;
+
+  beforeEachProviders(() => [
     provide(LoginService, {useClass: MockLoginService}),
     UserService
   ]);
 
-  it('should ask for PIN', async(inject([TestComponentBuilder], (tcb) => {
-    tcb.createAsync(GreetingComponent).then((fixture) => {
+  beforeEach(inject([TestComponentBuilder], (tcb) => {
+    builder = tcb;
+  }));
+
+  it('should ask for PIN', async(() => {
+    builder.createAsync(GreetingComponent).then((fixture) => {
       fixture.detectChanges();
       var compiled = fixture.debugElement.nativeElement;
 
@@ -37,10 +44,10 @@ describe('greeting component', () => {
       expect(compiled).toContainText('Enter PIN');
       expect(compiled.querySelector('h3')).toHaveText('Status: Enter PIN');
     });
-  })));
+  }));
 
-  it('should change greeting', async(inject([TestComponentBuilder], (tcb) => {
-    tcb.createAsync(GreetingComponent).then((fixture) => {
+  it('should change greeting', async(() => {
+    builder.createAsync(GreetingComponent).then((fixture) => {
       fixture.detectChanges();
 
       fixture.debugElement.componentInstance.greeting = "Foobar";
@@ -49,20 +56,20 @@ describe('greeting component', () => {
       var compiled = fixture.debugElement.nativeElement;
       expect(compiled.querySelector('h3')).toHaveText('Status: Foobar');
     });
-  })));
+  }));
 
-  it('should override the template', async(inject([TestComponentBuilder], (tcb) => {
-    tcb.overrideTemplate(GreetingComponent, `<span>{{greeting}}<span>`)
+  it('should override the template', async(() => {
+    builder.overrideTemplate(GreetingComponent, `<span>{{greeting}}<span>`)
         .createAsync(GreetingComponent).then((fixture) => {
           fixture.detectChanges();
 
           var compiled = fixture.debugElement.nativeElement;
           expect(compiled).toHaveText('Enter PIN');
         });
-      })));
+      }));
 
-  it('should accept pin', async(inject([TestComponentBuilder], (tcb) => {
-    tcb.createAsync(GreetingComponent).then((fixture) => {
+  it('should accept pin', async(() => {
+    builder.createAsync(GreetingComponent).then((fixture) => {
       fixture.detectChanges();
       var compiled = fixture.debugElement.nativeElement;
       compiled.querySelector('button').click();
@@ -72,11 +79,11 @@ describe('greeting component', () => {
         expect(compiled.querySelector('h3')).toHaveText('Status: Welcome!');
       });;
     });
-  })));
+  }));
 
-  it('should accept pin (with fakeAsync)', fakeAsync(inject([TestComponentBuilder], (tcb) => {
+  it('should accept pin (with fakeAsync)', fakeAsync(() => {
     var fixture;
-    tcb.createAsync(GreetingComponent).then((rootFixture) => {
+    builder.createAsync(GreetingComponent).then((rootFixture) => {
       fixture = rootFixture });
     tick();
 
@@ -86,5 +93,5 @@ describe('greeting component', () => {
     tick();
     fixture.detectChanges();
     expect(compiled.querySelector('h3')).toHaveText('Status: Welcome!');
-  })));
+  }));
 });
