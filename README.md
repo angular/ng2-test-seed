@@ -47,7 +47,7 @@ files and source maps from the `.ts` files. Run with:
 `npm run build`
 
 You can examine the configuration for the TypeScript compiler in `tsconfig.json`.
-The generated files are output in the `build/` folder.
+The generated files are output in the `built/` folder.
 
 To remove all generated files, run:
 
