@@ -1,7 +1,9 @@
 ## Intro
 
-This repository is a seed Angular2 application, with a focus on showing how
+This repository is an example Angular2 application, with a focus on showing how
 unit tests can be written and run.
+
+For a full-service starter application, try [angular-cli](https://github.com/angular/angular-cli).
 
 ## Software Prerequisites
 
