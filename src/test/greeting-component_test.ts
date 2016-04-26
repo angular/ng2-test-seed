@@ -5,7 +5,7 @@ import {
   describe,
   expect,
   inject,
-  injectAsync,
+  async,
   TestComponentBuilder,
   beforeEachProviders,
   fakeAsync,
@@ -28,8 +28,8 @@ describe('greeting component', () => {
     UserService
   ]);
 
-  it('should ask for PIN', injectAsync([TestComponentBuilder], (tcb) => {
-    return tcb.createAsync(GreetingComponent).then((fixture) => {
+  it('should ask for PIN', async(inject([TestComponentBuilder], (tcb) => {
+    tcb.createAsync(GreetingComponent).then((fixture) => {
       fixture.detectChanges();
       var compiled = fixture.debugElement.nativeElement;
 
@@ -37,10 +37,10 @@ describe('greeting component', () => {
       expect(compiled).toContainText('Enter PIN');
       expect(compiled.querySelector('h3')).toHaveText('Status: Enter PIN');
     });
-  }));
+  })));
 
-  it('should change greeting', injectAsync([TestComponentBuilder], (tcb) => {
-    return tcb.createAsync(GreetingComponent).then((fixture) => {
+  it('should change greeting', async(inject([TestComponentBuilder], (tcb) => {
+    tcb.createAsync(GreetingComponent).then((fixture) => {
       fixture.detectChanges();
 
       fixture.debugElement.componentInstance.greeting = "Foobar";
@@ -49,32 +49,32 @@ describe('greeting component', () => {
       var compiled = fixture.debugElement.nativeElement;
       expect(compiled.querySelector('h3')).toHaveText('Status: Foobar');
     });
-  }));
+  })));
 
-  it('should override the template', injectAsync([TestComponentBuilder], (tcb) => {
-    return tcb.overrideTemplate(GreetingComponent, `<span>{{greeting}}<span>`)
+  it('should override the template', async(inject([TestComponentBuilder], (tcb) => {
+    tcb.overrideTemplate(GreetingComponent, `<span>{{greeting}}<span>`)
         .createAsync(GreetingComponent).then((fixture) => {
           fixture.detectChanges();
 
           var compiled = fixture.debugElement.nativeElement;
           expect(compiled).toHaveText('Enter PIN');
         });
-      }));
+      })));
 
-  it('should accept pin', injectAsync([TestComponentBuilder], (tcb) => {
-    return tcb.createAsync(GreetingComponent).then((fixture) => {
+  it('should accept pin', async(inject([TestComponentBuilder], (tcb) => {
+    tcb.createAsync(GreetingComponent).then((fixture) => {
       fixture.detectChanges();
       var compiled = fixture.debugElement.nativeElement;
       compiled.querySelector('button').click();
 
-      return fixture.debugElement.componentInstance.pending.then(() => {
+      fixture.debugElement.componentInstance.pending.then(() => {
         fixture.detectChanges();
         expect(compiled.querySelector('h3')).toHaveText('Status: Welcome!');
       });;
     });
-  }));
+  })));
 
-  it('should accept pin (with fakeAsync)', inject([TestComponentBuilder], fakeAsync((tcb) => {
+  it('should accept pin (with fakeAsync)', fakeAsync(inject([TestComponentBuilder], (tcb) => {
     var fixture;
     tcb.createAsync(GreetingComponent).then((rootFixture) => {
       fixture = rootFixture });
