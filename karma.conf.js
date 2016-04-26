@@ -17,7 +17,6 @@ module.exports = function(config) {
       // Zone.js dependencies
       // Note - do not include zone.js itself here, it is already
       // included in angular2-polyfills
-      'node_modules/zone.js/dist/long-stack-trace-zone.js',
       'node_modules/zone.js/dist/jasmine-patch.js',
       'node_modules/zone.js/dist/async-test.js',
       'node_modules/zone.js/dist/fake-async-test.js',
