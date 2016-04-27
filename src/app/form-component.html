@@ -1,0 +1,30 @@
+<div>
+  Subscribe to our newsletter
+
+  <div>
+    <label for="my-nickname">Nickname</label>
+    <input id="my-nickname" type="text" [(ngModel)]="nickname"/>
+  </div>
+
+  <form (ngSubmit)="register()">
+    <div ngControlGroup="location">
+      <label for="my-address">Address</label>
+      <input id="my-address" type="text" ngControl="address"/>
+
+      <label for="my-zip">Zip</label>
+      <input id="my-zip" type="number" ngControl="zip"/>
+    </div>
+
+    <label for="my-shippping">Free Shipping?</label>
+    <input id="my-shipping" type="checkbox" ngControl="shipping"/>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div *ngIf="showConfirmation">
+    Confirmation:
+    <p id="my-confirmation">
+      Sending to {{nickname}} at {{form.value.location.address}}, {{form.value.location.zip}} for {{form.value.shipping ? 'free' : '$50'}}
+    </p>
+  </div>
+</div>
