@@ -6,7 +6,7 @@ import { LoginService } from '../app/login-service';
 
 
 describe('user service', () => {
-  beforeEachProviders(() => [LoginService, UserService])
+  beforeEachProviders(() => [LoginService, UserService]);
 
   it('should validate pins', inject([UserService], (service) => {
     service.pin = 12345;

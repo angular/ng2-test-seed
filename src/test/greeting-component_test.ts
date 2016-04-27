@@ -50,7 +50,7 @@ describe('greeting component', () => {
     builder.createAsync(GreetingComponent).then((fixture) => {
       fixture.detectChanges();
 
-      fixture.debugElement.componentInstance.greeting = "Foobar";
+      fixture.debugElement.componentInstance.greeting = 'Foobar';
 
       fixture.detectChanges();
       var compiled = fixture.debugElement.nativeElement;
@@ -77,7 +77,7 @@ describe('greeting component', () => {
       fixture.debugElement.componentInstance.pending.then(() => {
         fixture.detectChanges();
         expect(compiled.querySelector('h3')).toHaveText('Status: Welcome!');
-      });;
+      });
     });
   }));
 
