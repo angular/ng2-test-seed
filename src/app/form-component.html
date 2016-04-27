@@ -5,8 +5,14 @@
     <label for="my-nickname">Nickname</label>
     <input id="my-nickname" type="text" [(ngModel)]="nickname"/>
   </div>
+  <span>{{nickname}}</span>
 
-  <form (ngSubmit)="register()">
+  <simpleclick></simpleclick>
+
+  <otherclick (attack)="retreat()"></otherclick>
+  <div id="m3">{{retreated}}</div>
+
+<!--   <form (ngSubmit)="register()">
     <div ngControlGroup="location">
       <label for="my-address">Address</label>
       <input id="my-address" type="text" ngControl="address"/>
@@ -19,7 +25,7 @@
     <input id="my-shipping" type="checkbox" ngControl="shipping"/>
 
     <button type="submit">Submit</button>
-  </form>
+  </form> -->
 
   <div *ngIf="showConfirmation">
     Confirmation:

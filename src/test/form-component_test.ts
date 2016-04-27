@@ -1,6 +1,7 @@
 import {
   iit,
   it,
+  xit,
   ddescribe,
   describe,
   expect,
@@ -15,7 +16,7 @@ import {
 } from 'angular2/testing';
 import {By} from 'angular2/platform/common_dom';
 import { provide } from 'angular2/core';
-import { FormComponent } from '../app/form-component';
+import { FormComponent, SimpleClick, OtherClick } from '../app/form-component';
 
 ddescribe('form components', () => {
   var fixture;
@@ -26,7 +27,47 @@ ddescribe('form components', () => {
     });
   })));
 
-  iit('should change ngModel', async(() => {
+  it('should do a simple click', async(() => {
+    fixture.detectChanges();
+
+    // var el = fixture.nativeElement.querySelector('#my-nickname');
+    var but = fixture.debugElement.query(By.css('#n1')).nativeElement;
+    but.click();
+    var span = fixture.debugElement.query(By.css('#n2')).nativeElement;
+
+    console.log(span);
+
+    fixture.detectChanges();
+
+    console.log(span);
+  }));
+
+  it('should do a simple click', async(() => {
+    fixture.detectChanges();
+
+    // var el = fixture.nativeElement.querySelector('#my-nickname');
+    var but = fixture.debugElement.query(By.css('#m1')).nativeElement;
+    but.click();
+    var span = fixture.debugElement.query(By.css('#m2')).nativeElement;
+    var otherSpan = fixture.debugElement.query(By.css('#m3')).nativeElement;
+
+    console.log(span);
+    console.log(otherSpan);
+
+    fixture.detectChanges();
+
+    console.log(span);
+    console.log(otherSpan);
+
+    setTimeout(() => {
+      fixture.detectChanges();
+      console.log(span);
+      console.log(otherSpan);
+    }, 200);
+  }));  
+
+
+  xit('should change ngModel', async(() => {
     fixture.detectChanges();
 
     // var el = fixture.nativeElement.querySelector('#my-nickname');
@@ -48,7 +89,7 @@ ddescribe('form components', () => {
     }, 100);
   }));
 
-  it('should display a form', async(() => {
+  xit('should display a form', async(() => {
     fixture.detectChanges();
     console.log(fixture.componentInstance.form.value.location);
 
