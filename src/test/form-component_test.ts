@@ -16,111 +16,54 @@ import {
 } from 'angular2/testing';
 import {By} from 'angular2/platform/common_dom';
 import { provide } from 'angular2/core';
-import { FormComponent, SimpleClick, OtherClick } from '../app/form-component';
+import { FormComponent, Form2Component} from '../app/form-component';
 
 ddescribe('form components', () => {
-  var fixture;
+  var builder;
 
   beforeEach(async(inject([TestComponentBuilder], (tcb) => {
-    tcb.createAsync(FormComponent).then((componentFixture: ComponentFixture) => {
-      fixture = componentFixture;
-    });
+    builder = tcb;
   })));
 
-  it('should do a simple click', async(() => {
-    fixture.detectChanges();
-
-    // var el = fixture.nativeElement.querySelector('#my-nickname');
-    var but = fixture.debugElement.query(By.css('#n1')).nativeElement;
-    but.click();
-    var span = fixture.debugElement.query(By.css('#n2')).nativeElement;
-
-    console.log(span);
-
-    fixture.detectChanges();
-
-    console.log(span);
-  }));
-
-  it('should do a simple click', async(() => {
-    fixture.detectChanges();
-
-    // var el = fixture.nativeElement.querySelector('#my-nickname');
-    var but = fixture.debugElement.query(By.css('#m1')).nativeElement;
-    but.click();
-    var span = fixture.debugElement.query(By.css('#m2')).nativeElement;
-    var otherSpan = fixture.debugElement.query(By.css('#m3')).nativeElement;
-
-    console.log(span);
-    console.log(otherSpan);
-
-    fixture.detectChanges();
-
-    console.log(span);
-    console.log(otherSpan);
-
-    setTimeout(() => {
+  it('should display a form to register', async(() => {
+    builder.createAsync(FormComponent).then((fixture: ComponentFixture) => {
       fixture.detectChanges();
-      console.log(span);
-      console.log(otherSpan);
-    }, 200);
-  }));  
+      // given a form
+      let userForm = fixture.componentInstance.userForm;
+      expect(userForm.value).toEqual({});
 
+      setTimeout(() => {
+        fixture.detectChanges();
+        expect(userForm.value).toEqual({ login: null });
 
-  xit('should change ngModel', async(() => {
-    fixture.detectChanges();
+        let login = fixture.debugElement.query(By.css('input'));
+        login.nativeElement.value = 'Cédric';
+        login.nativeElement.dispatchEvent(new Event('input'));
 
-    // var el = fixture.nativeElement.querySelector('#my-nickname');
-    var el = fixture.debugElement.query(By.css('#my-nickname')).nativeElement;
-
-    el.value = 'Ace';
-    debugger;
-    el.dispatchEvent(new Event('input')); // Necessary and event has to be 'input'
-
-
-    // fixture.detectChanges(); // not necessary.
-    // This is RESETTING back to the original nickname if we do not do
-    // the first detectChanges at the start.
-
-    console.log(fixture.componentInstance.nickname);
-
-    setTimeout(() => {
-      console.log(fixture.componentInstance.nickname);
-    }, 100);
+        setTimeout(() => {
+          fixture.detectChanges();
+          expect(userForm.value).toEqual({ login: 'Cédric' });
+        }, 100);
+      });
+    });
   }));
 
-  xit('should display a form', async(() => {
-    fixture.detectChanges();
-    console.log(fixture.componentInstance.form.value.location);
+  it('should display a form 2', async(() => {
+    builder.createAsync(Form2Component).then((fixture: ComponentFixture) => {
+      fixture.detectChanges();
+      // given a form
+      let userForm = fixture.componentInstance.userForm;
 
-    // let nativeElement = fixture.nativeElement;
-    // debugger;
-    // nativeElement.querySelector('#my-address').value = 'New York';
-    // debugger;
-    // // nativeElement.querySelector('#my-zip').value = '10001';
-    // nativeElement.querySelector('#my-address').dispatchEvent(new Event('input'));
-    // // nativeElement.querySelector('button').click();
+      expect(userForm.value).toEqual({ login: '' });
 
-    var el = fixture.debugElement.query(By.css('#my-address')).nativeElement;
-    el.value = 'New York';
-    debugger;
+      // when adding values in the form
+      let nativeElement = fixture.nativeElement;
+      nativeElement.querySelector('input').value = 'Cédric';
+      nativeElement.querySelector('input').dispatchEvent(new Event('input'));
 
-    // fixture.detectChanges();
-    debugger;
+      fixture.detectChanges();
 
-    var evt: Event = document.createEvent('Event');
-    evt.initEvent('input', true, true);
-
-    el.dispatchEvent(evt);
-    debugger;
-
-    fixture.detectChanges();
-    debugger;
-
-    console.log(fixture.componentInstance.form.value.location);
-
-    setTimeout(() => {
-      console.log(fixture.componentInstance.form.value.location);
-    }, 100);
+      expect(userForm.value).toEqual({ login: 'Cédric' });
+    });
   }));
 });
