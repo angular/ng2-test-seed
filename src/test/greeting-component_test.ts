@@ -11,8 +11,8 @@ import {
   beforeEachProviders,
   fakeAsync,
   tick
-} from 'angular2/testing';
-import { provide } from 'angular2/core';
+} from '@angular/testing';
+import { provide } from '@angular/core';
 import { UserService } from '../app/user-service';
 import { LoginService } from '../app/login-service';
 import { GreetingComponent } from '../app/greeting-component';

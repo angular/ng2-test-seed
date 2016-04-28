@@ -8,8 +8,8 @@ import {
   inject,
   TestComponentBuilder,
   beforeEachProviders
-} from 'angular2/testing';
-import { Component } from 'angular2/core';
+} from '@angular/testing';
+import { Component } from '@angular/core';
 import { BorderComponent } from '../app/border-component';
 
 @Component({
