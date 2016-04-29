@@ -6,12 +6,14 @@ import {
   expect,
   inject,
   async,
-  TestComponentBuilder,
   beforeEach,
   beforeEachProviders,
   fakeAsync,
   tick
-} from '@angular/testing';
+} from '@angular/core/testing';
+import {
+  TestComponentBuilder
+} from '@angular/compiler/testing';
 import { provide } from '@angular/core';
 import { UserService } from '../app/user-service';
 import { LoginService } from '../app/login-service';

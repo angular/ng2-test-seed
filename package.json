@@ -32,7 +32,6 @@
     "zone.js": "0.6.12"
   },
   "devDependencies": {
-    "@angular/testing": "0.0.0-0",
     "http-server": "^0.8.5",
     "jasmine": "2.3.2",
     "karma": "^0.13.22",

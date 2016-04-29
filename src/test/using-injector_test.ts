@@ -3,7 +3,7 @@ import {
   describe,
   expect,
   inject
-} from '@angular/testing';
+} from '@angular/core/testing';
 import {
   APP_ID
 } from '@angular/core';

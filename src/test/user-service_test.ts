@@ -1,4 +1,4 @@
-import { it, iit, describe, expect, inject, async, beforeEachProviders, fakeAsync, tick } from '@angular/testing';
+import { it, iit, describe, expect, inject, async, beforeEachProviders, fakeAsync, tick } from '@angular/core/testing';
 import { provide } from '@angular/core';
 import { UserService } from '../app/user-service';
 import { LoginService } from '../app/login-service';

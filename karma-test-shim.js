@@ -75,7 +75,7 @@ System.config(
 });
 
 Promise.all([
-  System.import('@angular/testing'),
+  System.import('@angular/core/testing'),
   System.import('@angular/platform-browser-dynamic/testing')
 ]).then(function (providers) {
   var testing = providers[0];
@@ -85,7 +85,6 @@ Promise.all([
     testingBrowser.TEST_BROWSER_APPLICATION_PROVIDERS);
 
 }).then(function() {
-  console.log(allSpecFiles);
   // Finally, load all spec files.
   // This will run the tests directly.
   return Promise.all(

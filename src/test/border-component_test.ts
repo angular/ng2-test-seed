@@ -6,9 +6,11 @@ import {
   expect,
   async,
   inject,
-  TestComponentBuilder,
   beforeEachProviders
-} from '@angular/testing';
+} from '@angular/core/testing';
+import {
+  TestComponentBuilder
+} from '@angular/compiler/testing';
 import { Component } from '@angular/core';
 import { BorderComponent } from '../app/border-component';
 
