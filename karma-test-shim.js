@@ -76,14 +76,14 @@ System.config(
 
 Promise.all([
   System.import('@angular/testing'),
-  // TODO(JULIE): uncomment this once the next versions of @angular modules are out
-  // System.import('@angular/platform-browser/testing')
+  System.import('@angular/platform-browser-dynamic/testing')
 ]).then(function (providers) {
   var testing = providers[0];
   var testingBrowser = providers[1];
 
-  // testing.setBaseTestProviders(testingBrowser.TEST_BROWSER_PLATFORM_PROVIDERS,
-  //   testingBrowser.TEST_BROWSER_APPLICATION_PROVIDERS);
+  testing.setBaseTestProviders(testingBrowser.TEST_BROWSER_PLATFORM_PROVIDERS,
+    testingBrowser.TEST_BROWSER_APPLICATION_PROVIDERS);
+
 }).then(function() {
   console.log(allSpecFiles);
   // Finally, load all spec files.
