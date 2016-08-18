@@ -1,0 +1,42 @@
+{
+  "name": "ng2-test-seed",
+  "version": "0.0.2",
+  "description": "Setup seed for Angular 2 application",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/angular/ng-test-seed.git"
+  },
+  "scripts": {
+    "postinstall": "typings install --ambient",
+    "clean": "rimraf built/",
+    "copy": "cp src/{index.html,styles.css} built/",
+    "copytemplates": "cp src/app/{*.html,*.css} built/app/",
+    "build": "tsc && npm run copy && npm run copytemplates",
+    "watch": "tsc --watch",
+    "serve": "http-server -p 9090 -c-1",
+    "test": "karma start karma.conf.js"
+  },
+  "dependencies": {
+    "angular2": "2.0.0-beta.16",
+    "clang-format": "^1.0.35",
+    "es6-promise": "^3.0.2",
+    "es6-shim": "^0.35.0",
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.0-beta.2",
+    "systemjs": "0.19.20",
+    "zone.js": "0.6.12"
+  },
+  "devDependencies": {
+    "http-server": "^0.8.5",
+    "jasmine": "2.3.2",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.1",
+    "karma-cli": "^0.0.4",
+    "karma-jasmine": "^0.3.6",
+    "rimraf": "^2.4.3",
+    "systemjs": "^0.19.4",
+    "typescript": "1.8.10",
+    "typings": "^0.6.6"
+  }
+}
